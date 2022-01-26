@@ -1,5 +1,5 @@
 var started = false;
-$(document).keydown(function () {
+$(document).on('keydown touchend' ,function () {           // Press any to key to start
     if (!started) {
         nextSequence();
         started = true;
