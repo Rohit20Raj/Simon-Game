@@ -1,7 +1,9 @@
 var started = false;
 $(document).on('keydown touchend' ,function () {           // Press any to key to start
     if (!started) {
-        nextSequence();
+        setTimeout(function () {                                        //Call nextSequence() after a 1000 millisecond delay.
+            nextSequence();
+        }, 750);
         started = true;
     }
 });
@@ -28,9 +30,8 @@ function nextSequence() {
 
     var sound = new Audio("sounds/" + buttonColors[randomNumber] + ".mp3"); // Playing sound for chosen button
     sound.play();
-
-    
 }
+
 $("button").on("click", function () {                                         // User chosen color
     var userChosenColour = $(this).attr("class");
     userClickedPattern.push(userChosenColour);                          // Pushing the user chosen color in userClickePattern array
@@ -52,8 +53,17 @@ function checkAnswer(currentLevel) {
         }
     }
     else{
-        alert("You messed up...!");
-        alert("Your score: "+Level);
-        location.reload();
+        // $("h1").text("GAME OVER ");
+        $("h2").text("Your score: " + (Level-1));
+        var audio = new Audio("sounds/wrong.mp3");
+        audio.play();
+        $("body").css("background-color", "red");
+        setTimeout(function () {                                        //Call nextSequence() after a 5000 millisecond delay.
+            $("body").css("background-color", "white");
+        }, 500);
+        $("h1").text("Press any key to restart");
+        $(document).on('keydown touchend', function () {           
+           location.reload();
+        });
     }
 }
