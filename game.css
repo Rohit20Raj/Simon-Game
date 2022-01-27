@@ -6,12 +6,12 @@ body{
 }
 .grid-container {
     display: grid;
-    grid-template-columns: 150px 150px;
+    grid-template-columns: 200px 200px;
     /* background-color: #2196F3; */
     padding: 10px;
     grid-column-gap: 15px;
     grid-row-gap: 15px;
-    width: 300px;
+    width: 416px;
     margin: auto;
     align-items: center;
 }
@@ -35,9 +35,18 @@ body{
     background-color: blue;
 }
 button{
-    height: 20vh;
-    width: 20vh;
+    height: 200px;
+    width: 200px;
     border-radius: 10px; 
     border: 5px solid black;
 }
-
+@media only screen and (max-width: 500px){
+    .grid-container{
+        grid-template-columns: 150px 150px;
+        width: 314px;
+    }
+    button{
+        height: 150px;
+        width: 150px;
+    }
+}
